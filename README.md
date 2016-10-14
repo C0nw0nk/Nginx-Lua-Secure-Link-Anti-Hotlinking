@@ -1,6 +1,8 @@
 # Nginx-Lua-Anti-Hotlinking-Config
 My soloution to those who try to use proxies to hotlink / steal or waste bandwidth from your sites and servers it works the same as the secure_link module but i did it using entirely Lua.
 
+The reason i did this was because my PHP / CMS / Web Applications that i run all use caching and because they serve that same cached page to users with different IP addresses etc it means if my web app was to generate a secure link instead of Nginx they will be served 403 forbidden errors when ever they went to access any file.
+
 If you have a problem make a Issue request or if you fix something make a pull request and i will push it to the main repo. Thanks for any contributions that will help others <3
 
 The way this works is a rather than hack the core of your PHP, ASP.net, Javascript, HTML etc what ever your web application / CMS uses to generate it's link's, I rewrite the output links in the html body contents so you don't need to hack your web application and risk making it incompatible with other servers.
@@ -36,6 +38,7 @@ font-family: Tahoma, Verdana, Arial, sans-serif;
 <!-- Video source link that should be caught by lua -->
 <source src="/1.mp4" type="video/mp4">
 <!-- This should be changed -->
+<!-- Output url should be /1.mp4?md5=encrypted&expires=unix_timestamp -->
 
 Your browser does not support the video tag.
 </video>
