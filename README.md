@@ -15,8 +15,7 @@ access_by_lua_block {}
 ```
 
 #HTML Example output
-Lua will use regex to match src="*" and replace the link on the page output contents with its generated secure link
-In the config example i provided i show only .MP4 urls to be replace / rewritten but you can litteraly change the .mp4 to .mp3 .m4v .avi .flv .swf what ever the file format you want to force the user getting the file to have to visit your site to get a secure link in the first place.
+Lua will use regex to match src="*" and replace the link on the page output contents with its generated secure link for what ever file format types you choose.
 ```
 <!DOCTYPE html>
 <html>
@@ -48,3 +47,7 @@ Your browser does not support the video tag.
 
 ## Known Issue's :
 Peseudo Streaming does not seem to wan't to work with any form of secure link generation including Nginx's built in secure_link module if anyone knows a way around this or a fix please do share / feel free to make a pull request post a issue etc.
+
+## TODO :
+Make the regex recognize when a src="*" link contains "../" for back tracking directories currently it does not pick up on these link formats within the quotations so the hash encoded key generated will differ to the one generated in the file location resulting in the http 403 forbidden error.
+The same goes for src="http://www.*" it needs to be more universal than just basic src="/*"
