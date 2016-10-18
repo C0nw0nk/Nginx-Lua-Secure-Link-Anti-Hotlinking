@@ -7,6 +7,8 @@ If you have a problem make a Issue request or if you fix something make a pull r
 
 The way this works is a rather than hack the core of your PHP, ASP.net, Javascript, HTML etc what ever your web application / CMS uses to generate it's link's, I rewrite the output links in the html body contents so you don't need to hack your web application and risk making it incompatible with other servers.
 
+It also has a added benefit where malicious traffic that could be targeting a specific file, It may be DoS or DDoS or a form of Slowloris attacking trying to waste / consume bandwidth so nobody else can access the server or the file in question, It stops their attack from working due to the secure link being generated matches that users IP address only so any other IP addresses that may try to access the file without a secure link or without their own generated secure link to match their own IP address will be served a 403 forbidden error, The secure links expire after what ever time you specify means any generated link will NOT last forever, I set it to 1 hour as the max time a secure link is valid for the file path / url in question and IP address that the user requested.
+
 Only uses the following Lua syntaxes
 ```
 body_filter_by_lua_block {}
